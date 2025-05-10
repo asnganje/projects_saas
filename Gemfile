@@ -62,6 +62,8 @@ group :test do
   gem "selenium-webdriver"
 end
 
+gem "inline_svg"
+gem "htmlbeautifier"
 gem 'dotenv-rails'
 
 gem "tailwindcss-ruby", "~> 4.1"
