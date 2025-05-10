@@ -64,7 +64,7 @@ end
 
 gem "inline_svg"
 gem "htmlbeautifier"
-gem 'dotenv-rails'
+gem "dotenv-rails"
 
 gem "tailwindcss-ruby", "~> 4.1"
 
