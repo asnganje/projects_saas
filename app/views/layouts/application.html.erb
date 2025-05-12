@@ -24,8 +24,11 @@
 
   <body>
     <main class="">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <% if notice.present? %>
+        <p class="absolute top-6 left-[40%] h-8 bg-green-600 text-gray-200 font-semibold rounded-md px-6 w-[30%]"><%= notice %></p>
+      <%elsif alert.present?%>
+      <p class="absolute top-6 left-[40%] h-8 bg-red-600 text-gray-200 font-semibold rounded-md px-6 w-[30%]"><%= alert %></p>
+      <%end%>
       <%= yield %>
     </main>
   </body>

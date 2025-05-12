@@ -1,18 +1,5 @@
 <div class="px-8 py-4 bg-gray-200 h-screen">
-  <nav class="flex justify-between items-center">
-    <h1>
-      <a href="" class="text-4xl uppercase font-extrabold text-gray-900 hover:italic">Logo</a>
-    </h1>
-    <div class="flex gap-6">
-      <%= link_to new_user_session_path, class:"flex items-center bg-orange-600 p-2 rounded-md capitalize font-bold text-gray-200 hover:bg-orange-700" do %>
-        Login
-        <span>
-          <%= inline_svg_tag("arrow-right-circle.svg", class:"size-6")%>
-        </span>
-      <%end%>
-      <%=link_to "Signup", new_user_registration_path, class:"bg-gray-800 p-2 rounded-md capitalize font-bold text-gray-200 hover:bg-gray-600" %>
-    </div>
-  </nav>
+  <%=render 'home/navigation'%>
   <main class="relative grid md:flex items-center justify-around">
     <section class="md:w-1/2">
       <div class="absolute top-10 hidden xl:flex justify-between w-1/2">
