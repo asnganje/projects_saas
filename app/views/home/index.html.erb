@@ -4,13 +4,13 @@
       <a href="" class="text-4xl uppercase font-extrabold text-gray-900 hover:italic">Logo</a>
     </h1>
     <div class="flex gap-6">
-      <a href="" class="flex items-center bg-orange-600 p-2 rounded-md capitalize font-bold text-gray-200 hover:bg-orange-700">
+      <%= link_to new_user_session_path, class:"flex items-center bg-orange-600 p-2 rounded-md capitalize font-bold text-gray-200 hover:bg-orange-700" do %>
         Login
         <span>
           <%= inline_svg_tag("arrow-right-circle.svg", class:"size-6")%>
         </span>
-      </a>
-      <a href="" class="bg-gray-800 p-2 rounded-md capitalize font-bold text-gray-200 hover:bg-gray-600">Signup</a>
+      <%end%>
+      <%=link_to "Signup", new_user_registration_path, class:"bg-gray-800 p-2 rounded-md capitalize font-bold text-gray-200 hover:bg-gray-600" %>
     </div>
   </nav>
   <main class="relative grid md:flex items-center justify-around">
@@ -21,12 +21,12 @@
       </div>
       <h2 class="font-bold text-4xl capitalize mb-4">Manage your Projects with ease</h2>
       <p class="mb-8 text-2xl ">Project tasks is a project management tool that helps you organise your projects and tasks</p>
-      <a href="" class="flex items-center justify-center gap-5 bg-orange-600 p-4 text-gray-200 text-4xl rounded-md hover:text-gray-600">
+      <%=link_to dashboard_index_path, class:"flex items-center justify-center gap-5 bg-orange-600 p-4 text-gray-200 text-4xl rounded-md hover:text-gray-600" do%>
         <span>Get Started</span>
         <span>
           <%= inline_svg_tag("forward.svg", class:"size-10 mt-2")%>
         </span>
-      </a>
+      <%end%>
       <div class="absolute bottom-5 hidden xl:flex justify-between w-1/2">
         <%= inline_svg_tag("star.svg", class:"size-20")%>
         <%= inline_svg_tag("flash.svg", class:"size-20")%>
