@@ -1,0 +1,27 @@
+  <nav class="flex justify-between items-center">
+    <h1>
+      <a href="" class="text-4xl uppercase font-extrabold text-gray-900 hover:italic">Logo</a>
+    </h1>
+    <div class="flex gap-6">
+      <%if signed_in?%>
+        <%= link_to destroy_user_session_path,
+          method: :delete,
+          data: {turbo_method: :delete},
+          class:"flex items-center bg-orange-600 p-2 rounded-md capitalize font-bold text-gray-200 hover:bg-orange-700" do %>
+          Logout
+          <span>
+            <%= inline_svg_tag("arrow-right-circle.svg", class:"size-6")%>
+          </span>
+        <%end%>
+        <%=link_to "Dashboard", dashboard_index_path, class:"bg-gray-800 p-2 rounded-md capitalize font-bold text-gray-200 hover:bg-gray-600" %>
+      <%else%>
+        <%= link_to new_user_session_path, class:"flex items-center bg-orange-600 p-2 rounded-md capitalize font-bold text-gray-200 hover:bg-orange-700" do %>
+          Login
+          <span>
+            <%= inline_svg_tag("arrow-right-circle.svg", class:"size-6")%>
+          </span>
+        <%end%>
+        <%=link_to "Signup", new_user_registration_path, class:"bg-gray-800 p-2 rounded-md capitalize font-bold text-gray-200 hover:bg-gray-600" %>
+      <%end%>
+    </div>
+  </nav>
