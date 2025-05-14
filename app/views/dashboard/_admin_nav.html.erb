@@ -11,7 +11,7 @@
   <div>
     <%=inline_svg_tag("notification.svg")%>
   </div>
-  <div class="relative cursor-pointer">
+  <div data-action="click->toggle#toggleProfileCard" class="relative cursor-pointer">
     <%=inline_svg_tag("user.svg")%>
     <%= render "dashboard/profile_card"%>
   </div>
