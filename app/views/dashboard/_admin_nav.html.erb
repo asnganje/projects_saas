@@ -1,0 +1,17 @@
+<nav class="flex items-center justify-between bg-gray-600 py-4 px-6 text-gray-200">
+  <div>
+    <button>
+      <%= inline_svg_tag("hamburger.svg")%>
+    </button>
+  </div>
+  <div class="relative flex items-center">
+    <input type="text" class="bg-gray-700 p-2 rounded-md" placeholder="Search for projects" />
+    <%= inline_svg_tag("search.svg", class:"absolute right-0 cursor-pointer")%>
+  </div>
+  <div>
+    <%=inline_svg_tag("notification.svg")%>
+  </div>
+  <div>
+    <%=inline_svg_tag("user.svg")%>
+  </div>
+</nav>
