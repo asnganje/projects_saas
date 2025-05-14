@@ -1,2 +1,9 @@
-<p>Welcome to the dashboard!</p>
-<%= link_to "Logout", destroy_user_session_path, method: :delete, data:{turbo_method: :delete} %>
+<div data-controller="toggle" class="h-screen bg-gray-900">
+  <%= render "dashboard/admin_nav"%>
+  <div class="flex w-full">
+    <%=render "dashboard/sidebar"%>
+    <main>
+      <h2 class="text-gray-100">This is the main page</h2>
+    </main>
+  </div>
+</div>
