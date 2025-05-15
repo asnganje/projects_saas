@@ -24,24 +24,7 @@
 
   <body>
     <main class="">
-      <div data-controller = "close" data-close-hidden-class="hidden"  data-close-timeout-value="3000">
-          <% if notice.present? %>
-          <p data-close-target = "notice" class="absolute top-2 right-6  flex justify-between items-center h-8 bg-green-600 text-gray-200 font-semibold rounded-md px-6 w-[50%]">
-            <%= notice %>
-            <span data-action="click->close#hide">
-            <%= inline_svg_tag("close.svg", class:"cursor-pointer")%>
-            </span>
-          </p>
-        <%elsif alert.present?%>
-        <p data-close-target = "alert" class="absolute top-2 right-6 flex justify-between items-center h-8 bg-red-600 text-gray-200 font-semibold rounded-md px-6 w-[50%]">
-          <%= alert %>
-          <span data-action="click->close#hide">
-          <%= inline_svg_tag("close.svg", class:"cursor-pointer")%>
-          <span>
-        </p>
-        <%end%>
-      </div>
-      
+      <%= render "shared/flash"%>      
       <%= yield %>
     </main>
   </body>
