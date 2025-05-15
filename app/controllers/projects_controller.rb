@@ -26,7 +26,7 @@ class ProjectsController < ApplicationController
     if @project.update(project_params)
       redirect_to projects_url, notice:"Project successfully edited"
     else
-      redirect_to projects_url, alert:"Project could not be edited"
+      redirect_to projects_url, alert:@project.errors.full_messages.join("")
     end
   end
 
