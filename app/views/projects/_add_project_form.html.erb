@@ -1,0 +1,8 @@
+<div class="max-w-sm my-4 border-b border-blue-500 p-1 mx-auto">
+  <%= form_with model: Project.new do |form|%>
+    <div class="flex gap-5">
+      <%=form.text_field :name, placeholder:"Enter project name", class:"bg-transparent w-full text-gray-200 p-2"%>
+      <%=form.submit class:"bg-blue-500 hover:bg-blue-600 p-3 cursor-pointer rounded-md"%>
+    </div>
+  <%end%>
+</div>
