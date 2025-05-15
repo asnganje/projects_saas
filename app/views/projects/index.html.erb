@@ -1,0 +1,32 @@
+<div class="text-gray-200 p-4 w-full">
+  <%= render "projects/add_project_form"%>
+  <div class="w-full mt-4">
+    <table class="bg-gray-800 rounded-md w-full">
+      <thead>
+        <tr class="text-left uppercase border-b border-gray-500">
+        <th class="px-4 py-3">Name</th>
+        <th class="px-4 py-3">Status</th>
+      </tr>
+      </thead>
+      <tbody>
+        <% @projects.each do |project| %>
+        <tr class="border-b border-gray-500">
+          <td class="px-4 py-3 capitalize"><%= project.name %></td>
+          <td class="px-4 py-3">80%</td>
+          <td class="py-3">
+            <%= link_to edit_project_path(project), data:{turbo:true, turbo_frame: :modal} do%>
+              <%= inline_svg_tag("edit.svg", class:"cursor-pointer") %>
+            <%end%>
+          </td>
+          <td class="py-3">
+            <%= inline_svg_tag("view.svg", class:"cursor-pointer")%>
+          </td>
+          <td class="py-3">
+            <%=button_to inline_svg_tag("delete.svg", class:"cursor-pointer"), project_path(project), method: :delete, data:{turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+          </td>
+        </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+</div>

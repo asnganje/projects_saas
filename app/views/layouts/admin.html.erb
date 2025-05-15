@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
+    <%=turbo_refreshes_with method: :morph, scroll: :preserve%>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -24,8 +25,15 @@
 
   <body>
     <main class="">
-      <%= render "shared/flash"%>      
-      <%= yield %>
+      <%= render "shared/flash"%>
+      <div data-controller="toggle" class="min-h-screen bg-gray-900">
+        <%= render "dashboard/admin_nav"%>
+        <div class="flex w-full">
+          <%=render "dashboard/sidebar"%>
+          <%= yield %>
+          <%= turbo_frame_tag :modal%>
+          </div>
+      </div>
     </main>
   </body>
 </html>
