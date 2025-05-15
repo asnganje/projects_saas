@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   layout "admin"
   before_action :authenticate_user!
-  before_action :set_project, only: [:destroy]
+  before_action :set_project, only: [:destroy, :edit, :update]
   def index
     @projects = Project.all
   end
@@ -16,6 +16,17 @@ class ProjectsController < ApplicationController
       redirect_to projects_url, notice:"Project created!"
     else
       redirect_to projects_url, alert:@project.errors.full_messages.join("")
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @project.update(project_params)
+      redirect_to projects_url, notice:"Project successfully edited"
+    else
+      redirect_to projects_url, alert:"Project could not be edited"
     end
   end
 
