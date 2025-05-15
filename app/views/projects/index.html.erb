@@ -1,4 +1,27 @@
-<div>
-  <h1 class="font-bold text-4xl">Projects#index</h1>
-  <p>Find me in app/views/projects/index.html.erb</p>
+<div class="text-gray-200 p-4 w-full">
+  <div class="w-full">
+    <table class="bg-gray-800 rounded-md w-full">
+      <thead>
+        <tr class="text-left uppercase border-b border-gray-500">
+        <th class="px-4 py-3">Name</th>
+        <th class="px-4 py-3">Status</th>
+      </tr>
+      </thead>
+      <tbody>
+        <tr class="border-b border-gray-500">
+          <td class="px-4 py-3">Project name</td>
+          <td class="px-4 py-3">80%</td>
+          <td class="py-3">
+            <%= inline_svg_tag("edit.svg", class:"cursor-pointer")%>
+          </td>
+          <td class="py-3">
+            <%= inline_svg_tag("view.svg", class:"cursor-pointer")%>
+          </td>
+          <td class="py-3">
+            <%= inline_svg_tag("delete.svg", class:"cursor-pointer")%>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
