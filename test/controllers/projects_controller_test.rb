@@ -1,11 +1,11 @@
 require "test_helper"
 
 class ProjectsControllerTest < ActionDispatch::IntegrationTest
-  include Devise::Test::IntegrationHelpers 
+  include Devise::Test::IntegrationHelpers
 
   setup do
-    @user = users(:one)     
-    sign_in @user           
+    @user = users(:one)
+    sign_in @user
   end
 
   test "should get index" do
@@ -13,4 +13,3 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 end
-
