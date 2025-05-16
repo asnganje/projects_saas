@@ -64,6 +64,6 @@ class TasksController < ApplicationController
       @task = @project.tasks.find(params[:id])
     end
     def task_params
-      params.expect(task: [ :name, :duedate, :completed_at, :priority, :project_id ])
+      params.expect(task: [ :completed, :name, :duedate, :completed_at, :priority, :project_id ])
     end
 end
