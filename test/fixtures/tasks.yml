@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  duedate: 2025-05-16
+  completed_at: 2025-05-16 07:02:22
+  priority: 1
+  project: one
+
+two:
+  name: MyString
+  duedate: 2025-05-16
+  completed_at: 2025-05-16 07:02:22
+  priority: 1
+  project: two
