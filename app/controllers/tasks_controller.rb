@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
+   before_action :set_project, only: %i[ new show edit update destroy ]
   before_action :authenticate_user!
   layout "admin"
 
@@ -60,12 +61,12 @@ class TasksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    def set_project
+      @project = Project.find(params[:project_id])
+    end
     def set_task
       @task = Task.find(params.expect(:id))
     end
-
-    # Only allow a list of trusted parameters through.
     def task_params
       params.expect(task: [ :name, :duedate, :completed_at, :priority, :project_id ])
     end
