@@ -13,7 +13,9 @@
       <% @project.tasks.each do |task| %>
       <tr class="border-b border-gray-500">
         <td class="px-4 py-3 capitalize">
-          <input type="checkbox" name="" id="">
+          <%=form_with model: [@project, task] do |f|%>
+            <%=f.checkbox :completed %>
+          <%end%>
         </td>
         <td class="px-4 py-3 capitalize"><%= task.name %></td>
         <td class="px-4 py-3"><%= task.priority %></td>
