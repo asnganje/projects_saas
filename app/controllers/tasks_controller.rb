@@ -28,8 +28,7 @@ class TasksController < ApplicationController
       if @task.save
         format.html { redirect_to project_url(@project), notice: "Task was successfully created." }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
+        format.html {redirect_to project_url(@project), alert: @task.errors.full_messages.join("")}
       end
     end
   end
