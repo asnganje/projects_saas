@@ -19,7 +19,9 @@
             <%end%>
           </td>
           <td class="py-3">
-            <%= inline_svg_tag("view.svg", class:"cursor-pointer")%>
+            <%= link_to project_path(project) do %>
+              <%= inline_svg_tag("view.svg", class:"cursor-pointer")%>
+            <%end%>
           </td>
           <td class="py-3">
             <%=button_to inline_svg_tag("delete.svg", class:"cursor-pointer"), project_path(project), method: :delete, data:{turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
