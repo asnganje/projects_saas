@@ -6,6 +6,11 @@ class Task < ApplicationRecord
   enum :priority, {high:0, medium:1, low:2}
   after_update :update_completed_at
 
+  scope :incomplete_first, -> {order(completed_at: :desc)}
+  # def self.incomplete_first
+  #   order(completed_at: :desc)
+  # end
+
   def update_completed_at
     if completed?
       update_column(:completed_at, Time.current)
