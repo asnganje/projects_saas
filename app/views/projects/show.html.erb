@@ -5,5 +5,7 @@
     data:{turbo:true, turbo_frame: :modal},
     class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
   </div>
+  <progress class="w-full mt-4" value="<%=@project.tasks.completed.size%>" max="<%=@project.tasks.size%>">
+  </progress>
   <%= render "tasks/task"%>
 </div>
