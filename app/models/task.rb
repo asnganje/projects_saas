@@ -1,13 +1,13 @@
 class Task < ApplicationRecord
   belongs_to :project
-  validates :name, :duedate, presence: true 
-  validates :name, uniqueness: {case_sensitive: false, scope: :project_id}
+  validates :name, :duedate, presence: true
+  validates :name, uniqueness: { case_sensitive: false, scope: :project_id }
   validate :duedate_is_futuristic
-  enum :priority, {high:0, medium:1, low:2}
+  enum :priority, { high: 0, medium: 1, low: 2 }
   after_update :update_completed_at
 
-  scope :incomplete_first, -> {order(completed_at: :desc)}
-  scope :completed, ->{where(completed: true)}
+  scope :incomplete_first, -> { order(completed_at: :desc) }
+  scope :completed, -> { where(completed: true) }
   # def self.incomplete_first
   #   order(completed_at: :desc)
   # end
