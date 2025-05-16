@@ -10,8 +10,8 @@
     </tr>
     </thead>
     <tbody>
-      <% @project.tasks.each do |task| %>
-      <tr class="border-b border-gray-500">
+      <% @project.tasks.incomplete_first.each do |task| %>
+      <tr class="border-b border-gray-500 <%= "line-through text-orange-500" if task.completed? %>">
         <td class="px-4 py-3 capitalize">
           <%=form_with model: [@project, task] do |f|%>
             <%=f.checkbox :completed, onchange:"this.form.requestSubmit()" %>
