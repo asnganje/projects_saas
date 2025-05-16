@@ -15,7 +15,7 @@ class Task < ApplicationRecord
   end
 
   def duedate_is_futuristic
-    if duedate<Date.today
+    if duedate.present? && duedate<Date.today
       errors.add(:duedate, "must be in future")
     end
   end
