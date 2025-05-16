@@ -1,0 +1,11 @@
+<div class="w-full p-8 text-gray-500">
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl"><%=@project.name%></h1>
+    <%= link_to "New task", new_project_task_path(@project),
+    data:{turbo:true, turbo_frame: :modal},
+    class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
+  </div>
+  <progress class="w-full mt-4" value="<%=@project.tasks.completed.size%>" max="<%=@project.tasks.size%>">
+  </progress>
+  <%= render "tasks/task"%>
+</div>

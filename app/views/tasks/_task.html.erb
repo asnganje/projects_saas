@@ -1,0 +1,36 @@
+<div class="w-full mt-4 text-gray-200">
+  <table class="bg-gray-800 text-xs rounded-md w-full">
+    <thead>
+      <tr class="text-left capitalize border-b border-gray-500">
+      <th class="px-4 py-3">Complete</th>
+      <th class="px-4 py-3">Completed on</th>
+      <th class="px-4 py-3">Name</th>
+      <th class="px-4 py-3">Priority</th>
+      <th class="px-4 py-3">Due date</th>
+    </tr>
+    </thead>
+    <tbody>
+      <% @project.tasks.incomplete_first.each do |task| %>
+      <tr class="border-b border-gray-500 <%= "line-through text-orange-500" if task.completed? %>">
+        <td class="px-4 py-3 capitalize">
+          <%=form_with model: [@project, task] do |f|%>
+            <%=f.checkbox :completed, class: "cursor-pointer", onchange:"this.form.requestSubmit()" %>
+          <%end%>
+        </td>
+        <td class="px-4 py-3"><%= task.completed? ? "#{time_ago_in_words(task.completed_at)} ago" : "Incomplete"%></td>
+        <td class="px-4 py-3 capitalize"><%= task.name %></td>
+        <td class="px-4 py-3"><%= task.priority %></td>
+        <td class="px-4 py-3"><%= distance_of_time_in_words(Time.current, task.duedate) %></td>
+        <td class="py-3">
+          <%= link_to edit_project_task_path(@project, task), data:{turbo:true, turbo_frame: :modal} do%>
+            <%= inline_svg_tag("edit.svg", class:"cursor-pointer") %>
+          <%end%>
+        </td>
+        <td class="py-3">
+          <%=button_to inline_svg_tag("delete.svg", class:"cursor-pointer"), project_task_path(@project, task), method: :delete, data:{turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        </td>
+      </tr>
+      <%end%>
+    </tbody>
+  </table>
+</div>
