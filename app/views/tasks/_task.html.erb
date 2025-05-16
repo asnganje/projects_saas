@@ -14,7 +14,7 @@
       <tr class="border-b border-gray-500">
         <td class="px-4 py-3 capitalize">
           <%=form_with model: [@project, task] do |f|%>
-            <%=f.checkbox :completed %>
+            <%=f.checkbox :completed, onchange:"this.form.requestSubmit()" %>
           <%end%>
         </td>
         <td class="px-4 py-3 capitalize"><%= task.name %></td>
