@@ -17,10 +17,10 @@
             <%=f.checkbox :completed, onchange:"this.form.requestSubmit()" %>
           <%end%>
         </td>
-        <td class="px-4 py-3"><%= task.completed_at %></td>
+        <td class="px-4 py-3"><%= task.completed? ? "#{time_ago_in_words(task.completed_at)} ago" : "Incomplete"%></td>
         <td class="px-4 py-3 capitalize"><%= task.name %></td>
         <td class="px-4 py-3"><%= task.priority %></td>
-        <td class="px-4 py-3"><%= task.duedate %></td>
+        <td class="px-4 py-3"><%= distance_of_time_in_words(Time.current, task.duedate) %></td>
         <td class="py-3">
           <%= link_to edit_project_task_path(@project, task), data:{turbo:true, turbo_frame: :modal} do%>
             <%= inline_svg_tag("edit.svg", class:"cursor-pointer") %>
