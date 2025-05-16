@@ -7,10 +7,13 @@ class Task < ApplicationRecord
   after_update :update_completed_at
 
   scope :incomplete_first, -> {order(completed_at: :desc)}
+  scope :completed, ->{where(completed: true)}
   # def self.incomplete_first
   #   order(completed_at: :desc)
   # end
-
+  # def self.completed
+  #   where(completed: true)
+  # end
   def update_completed_at
     if completed?
       update_column(:completed_at, Time.current)
