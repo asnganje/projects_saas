@@ -14,7 +14,7 @@
       <tr class="border-b border-gray-500 <%= "line-through text-orange-500" if task.completed? %>">
         <td class="px-4 py-3 capitalize">
           <%=form_with model: [@project, task] do |f|%>
-            <%=f.checkbox :completed, onchange:"this.form.requestSubmit()" %>
+            <%=f.checkbox :completed, class: "cursor-pointer", onchange:"this.form.requestSubmit()" %>
           <%end%>
         </td>
         <td class="px-4 py-3"><%= task.completed? ? "#{time_ago_in_words(task.completed_at)} ago" : "Incomplete"%></td>
