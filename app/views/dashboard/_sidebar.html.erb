@@ -1,10 +1,16 @@
 <aside data-toggle-target="sidebar" class="min-h-screen bg-gray-700 pt-6 w-32 text-gray-100 pl-6 font-bold capitalize">
   <ul>
-    <li class="hover:text-gray-800 visited:text-gray-800">
+    <li class="mt-6 hover:text-gray-800 visited:text-gray-800">
+      <%= link_to "home", root_path %>
+    </li>
+    <li class="mt-6 hover:text-gray-800 visited:text-gray-800">
       <%= link_to "Dashboard", dashboard_index_path %>
     </li>
     <li class="mt-6 hover:text-gray-800 visited:text-gray-800">
       <%= link_to "project", projects_path %>
+    </li>
+    <li class="mt-6 hover:text-gray-800 visited:text-gray-800">
+      <%= link_to "Tasks", tasks_path %>
     </li>
   </ul>  
 </aside>
