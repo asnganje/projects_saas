@@ -1,6 +1,6 @@
 user = User.create!(
-  email:"asya@gmail.com",
-  password:"password"
+  email: "asya@gmail.com",
+  password: "password"
 )
 
 projects = 20.times.map do
