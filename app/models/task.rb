@@ -3,7 +3,7 @@ class Task < ApplicationRecord
   validates :name, :duedate, presence: true
   validates :name, uniqueness: { case_sensitive: false, scope: :project_id }
   # validate :duedate_is_futuristic
-  validates :duedate, comparison:{greater_than: Date.current}
+  validates :duedate, comparison: { greater_than: Date.current }
   enum :priority, { high: 0, medium: 1, low: 2 }
   after_update :update_completed_at
 
@@ -34,7 +34,6 @@ class Task < ApplicationRecord
   # end
 
   def self.ransackable_attributes(auth_object = nil)
-    ["completed", "completed_at", "created_at", "duedate", "id", "name", "priority", "project_id", "updated_at"]
+    [ "completed", "completed_at", "created_at", "duedate", "id", "name", "priority", "project_id", "updated_at" ]
   end
-
 end
