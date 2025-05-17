@@ -4,10 +4,20 @@
       <%= inline_svg_tag("hamburger.svg")%>
     </button>
   </div>
-  <div class="relative flex items-center">
-    <input type="text" class="bg-gray-700 p-2 rounded-md" placeholder="Search for projects" />
-    <%= inline_svg_tag("search.svg", class:"absolute right-0 cursor-pointer")%>
-  </div>
+  <%= form_with url:search_path,
+    method: :get,
+    data: {controller: "search"} do |form| %>
+    <div class="relative flex items-center">
+      <%= form.text_field :name,
+        class:"bg-gray-700 p-2 rounded-md",
+        placeholder:"Search for projects",
+        data: {search_target: "input", action: "input->search#debounce"}
+      %>
+      <button type="submit" class="absolute right-0 cursor-pointer">
+        <%= inline_svg_tag("search.svg")%>
+      </button>
+    </div>
+  <%end%>
   <div>
     <%=inline_svg_tag("notification.svg")%>
   </div>
