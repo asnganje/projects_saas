@@ -2,9 +2,9 @@ class ProjectsController < ApplicationController
   layout "admin"
   before_action :authenticate_user!
   before_action :set_project, only: [ :destroy, :edit, :update, :show ]
-  
+
   def index
-    @pagy, @projects = pagy(Project.includes(:tasks), limit:5)
+    @pagy, @projects = pagy(Project.includes(:tasks), limit: 5)
   end
 
   def new
