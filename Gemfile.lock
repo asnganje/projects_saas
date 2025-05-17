@@ -381,7 +381,7 @@ DEPENDENCIES
   inline_svg
   jbuilder
   kamal
-  pagy
+  pagy (~> 9.3, >= 9.3.4)
   pg (~> 1.1)
   propshaft
   puma (>= 5.0)
