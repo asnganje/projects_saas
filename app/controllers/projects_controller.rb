@@ -11,7 +11,8 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @pagy, @tasks = pagy(@project.tasks.incomplete_first, limit: 5)
+    @q = @project.tasks.ransack(params[:q])
+    @pagy, @tasks = pagy(@q.result.incomplete_first, limit: 5)
   end
 
   def create

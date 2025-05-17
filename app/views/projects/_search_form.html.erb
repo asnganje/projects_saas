@@ -1,0 +1,8 @@
+<div class="mt-2">
+  <%= search_form_for @q, url: project_path(@project) do |f| %>
+    <%= f.search_field :name_cont, class:"rounded-md text-xs bg-gray-200 p-2", placeholder:"search task name" %>
+    <button type="submit" class="absolute right-147 text-gray-100 mt-1 cursor-pointer">
+      <%= inline_svg_tag("search.svg") %>
+    </button>
+  <% end %>
+</div>
