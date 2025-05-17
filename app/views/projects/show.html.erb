@@ -7,5 +7,6 @@
   </div>
   <progress class="w-full mt-4" value="<%=@project.tasks.completed.size%>" max="<%=@project.tasks.size%>">
   </progress>
+  <%= render "projects/search_form"%>
   <%= render "tasks/task"%>
 </div>
