@@ -1,8 +1,18 @@
-<div class="mt-2">
-  <%= search_form_for @q, url: project_path(@project) do |f| %>
+<div class="flex justify-between mt-2 px-10">
+  <div class="relative">
+    <%= search_form_for @q, url: project_path(@project) do |f| %>
     <%= f.search_field :name_cont, class:"rounded-md text-xs bg-gray-200 p-2", placeholder:"search task name" %>
-    <button type="submit" class="absolute right-147 text-gray-100 mt-1 cursor-pointer">
+    <button type="submit" class="absolute -right-8 text-gray-100 mt-1 cursor-pointer">
       <%= inline_svg_tag("search.svg") %>
     </button>
   <% end %>
+  </div>
+  <div>
+    <%= link_to "clear", project_path(@project), class:"text-gray-100 hover:font-semi-bold hover:text-gray-200" %>
+  </div>
+  <div class="">
+    <%= search_form_for @q, url: project_path(@project) do |f| %>
+      <%= f.select :priority_eq, Task.priorities, {}, {class:"bg-gray-200 text-gray-800 rounded-md px-2 py-2", onchange:"this.form.requestSubmit()"} %>
+    <% end %>
+  </div>
 </div>
