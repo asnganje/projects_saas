@@ -10,7 +10,7 @@
     </tr>
     </thead>
     <tbody>
-      <% @project.tasks.incomplete_first.each do |task| %>
+      <% @tasks.each do |task| %>
       <tr class="border-b border-gray-500 <%= "line-through text-orange-500" if task.completed? %>">
         <td class="px-4 py-3 capitalize">
           <%=form_with model: [@project, task] do |f|%>
@@ -33,4 +33,7 @@
       <%end%>
     </tbody>
   </table>
+  <div class="flex items-center justify-center p-4">
+    <%== pagy_nav(@pagy) %>
+  </div>
 </div>
