@@ -5,7 +5,7 @@
       <%= link_to "Mark all as read", read_notifications_path %>
     </div>
   </div>
-  <div class="bg-gray-400 p-4 rounded-lg">
+  <div class="bg-gray-400 p-4 rounded-lg max-h-96 overflow-y-scroll">
     <ul>
       <%if @notifications.unread.any? %>
         <% @notifications.unread.each do |notification| %>

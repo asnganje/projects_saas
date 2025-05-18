@@ -78,3 +78,5 @@ gem "pagy", "~> 9.3", ">= 9.3.4"
 gem "ransack"
 
 gem "noticed", "~> 2.7"
+
+gem "good_job", "~> 4.10"
