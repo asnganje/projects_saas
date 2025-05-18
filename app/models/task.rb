@@ -8,9 +8,18 @@ class Task < ApplicationRecord
   validates :duedate, comparison: { greater_than: Date.current }
   enum :priority, { high: 0, medium: 1, low: 2 }
   after_update :update_completed_at
+  after_update :notify_urgent_tasks
 
   scope :incomplete_first, -> { order(completed_at: :desc) }
   scope :completed, -> { where(completed: true) }
+  scope :urgent, -> { where(duedate: (Time.current..24.hours.from_now)).where(completed: false) }
+
+  def notify_urgent_tasks
+    urgent_tasks = Task.urgent
+    urgent_tasks.each do |task|
+      UrgentTaskNotifier.with(record: task).deliver(task.project.user)
+    end
+  end
   # def self.incomplete_first
   #   order(completed_at: :desc)
   # end

@@ -5,6 +5,11 @@
         No unread notifications
       </li>
     <%else%>
+      <% current_user.notifications.unread.limit(5).each do |notification| %>
+        <li class="mb-6 border-b border-gray-900">
+          <%= link_to notification.message%>
+        </li>
+      <%end%>
       <li><%=link_to "See all", notifications_path %></li>
     <%end%>
   </ul>

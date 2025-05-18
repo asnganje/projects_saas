@@ -26,7 +26,6 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        UrgentTaskNotifier.with(record: @task).deliver(current_user)
         format.html { redirect_to project_url(@project), notice: "Task was successfully created." }
       else
         format.html { redirect_to project_url(@project), alert: @task.errors.full_messages.join("") }
