@@ -18,8 +18,12 @@
       </button>
     </div>
   <%end%>
-  <div>
+  <div data-action="click->toggle#toggleNotificationCard" class="relative cursor-pointer">
+    <% if current_user.notifications.unread.any? %>
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+    <%end%>
     <%=inline_svg_tag("notification.svg")%>
+    <%= render "dashboard/notification_card"%>
   </div>
   <div data-action="click->toggle#toggleProfileCard" class="relative cursor-pointer">
     <%=inline_svg_tag("user.svg")%>

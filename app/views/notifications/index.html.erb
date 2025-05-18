@@ -1,0 +1,23 @@
+<div class="w-96 p-6 mx-auto">
+  <div class="flex justify-between p-2 mb-5">
+    <h1 class="font-bold text-gray-300">Notifications</h1>
+    <div class = "text-blue-500">
+      <%= link_to "Mark all as read", read_notifications_path %>
+    </div>
+  </div>
+  <div class="bg-gray-400 p-4 rounded-lg max-h-96 overflow-y-scroll">
+    <ul>
+      <%if @notifications.unread.any? %>
+        <% @notifications.unread.each do |notification| %>
+          <li class="mb-6 border-b border-gray-900">
+            <%= link_to notification.message%>
+          </li>
+        <%end%>
+      <%else%>
+        <li class="mb-6 border-gray-900 rounded-md">
+            No unread notifications!
+        </li>
+      <%end%>
+    </ul>
+  </div> 
+</div>

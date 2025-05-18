@@ -1,20 +1,33 @@
 class Task < ApplicationRecord
   belongs_to :project
+  has_many :noticed_events, as: :record, dependent: :destroy, class_name: "Noticed::Event"
+  has_many :notifications, through: :noticed_events, class_name: "Noticed::Notification"
   validates :name, :duedate, presence: true
   validates :name, uniqueness: { case_sensitive: false, scope: :project_id }
   # validate :duedate_is_futuristic
   validates :duedate, comparison: { greater_than: Date.current }
   enum :priority, { high: 0, medium: 1, low: 2 }
   after_update :update_completed_at
+  # after_update :notify_urgent_tasks
 
   scope :incomplete_first, -> { order(completed_at: :desc) }
   scope :completed, -> { where(completed: true) }
+  scope :urgent, -> { where(duedate: (Time.current..24.hours.from_now)).where(completed: false) }
+
+  def notify_urgent_tasks
+    UrgentTaskJob.perform_later
+  end
   # def self.incomplete_first
   #   order(completed_at: :desc)
   # end
   # def self.completed
   #   where(completed: true)
   # end
+
+  def urgent?
+    (Time.current..24.hours.from_now).cover?(duedate) && !completed
+  end
+
   def expired?
     duedate <Date.current && !completed
   end
