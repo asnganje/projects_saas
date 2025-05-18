@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  mount GoodJob::Engine => 'good_job'
-  resources :notifications, only: [:index]
+  mount GoodJob::Engine => "good_job"
+  resources :notifications, only: [ :index ]
   get "search", to: "search#index"
   get "read_notifications", to: "read_notifications#read_all"
   devise_for :users

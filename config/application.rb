@@ -17,7 +17,7 @@ module ProjectsSass
       # Every 15 minutes, enqueue `ExampleJob.set(priority: -10).perform_later(42, "life", name: "Alice")`
       urgent_task: { # each recurring job must have a unique key
         cron: "@midnight", # cron-style scheduling format by fugit gem
-        class: "UrgentTaskJob", # name of the job class as a String; must reference an Active Job job class
+        class: "UrgentTaskJob" # name of the job class as a String; must reference an Active Job job class
         # optional description that appears in Dashboard
       }
       # etc.
