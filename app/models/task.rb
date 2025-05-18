@@ -15,6 +15,11 @@ class Task < ApplicationRecord
   # def self.completed
   #   where(completed: true)
   # end
+
+  def urgent?
+    (Time.current..24.hours.from_now).cover?(duedate) && !completed
+  end
+
   def expired?
     duedate <Date.current && !completed
   end
