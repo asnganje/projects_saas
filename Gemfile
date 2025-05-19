@@ -82,3 +82,5 @@ gem "noticed", "~> 2.7"
 gem "good_job", "~> 4.10"
 
 gem "chartkick"
+
+gem "groupdate"

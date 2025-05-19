@@ -133,6 +133,8 @@ GEM
       fugit (>= 1.11.0)
       railties (>= 6.1.0)
       thor (>= 1.0.0)
+    groupdate (6.6.0)
+      activesupport (>= 7.1)
     htmlbeautifier (1.4.3)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
@@ -392,6 +394,7 @@ DEPENDENCIES
   dotenv-rails
   faker
   good_job (~> 4.10)
+  groupdate
   htmlbeautifier
   importmap-rails
   inline_svg
