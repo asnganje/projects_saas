@@ -1,0 +1,10 @@
+<div class="flex flex-col lg:flex-row mt-10 gap-5">
+  <div class="w-1/2 lg:w-full p-4 overflow-x-auto bg-gray-200 rounded-md">
+    <h2 class="capitalize text-gray-900 my-2">Task by priority</h2>
+    <%= pie_chart @tasks.group(:priority).count, height: "300px", library: { responsive: true } %>
+  </div>
+  <div class="w-1/2 lg:w-full p-4  overflow-x-auto bg-gray-200 rounded-md">
+    <h2 class="capitalize text-gray-900 my-2">Task by due date</h2>
+    <%= line_chart @tasks.group_by_day(:duedate).count, height: "300px", library: { responsive: true } %>
+  </div>
+</div>
