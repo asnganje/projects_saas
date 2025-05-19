@@ -1,8 +1,40 @@
 <main class="text-gray-200 p-3 mx-auto">
-  <div class="flex">
+  <div class="flex gap-6 flex-wrap">
     <div class="rounded-lg bg-gray-600 h-24 min-w-24 p-4 text-center">
       <p class="capitalize mb-3 border-2 border-dotted border-gray-800 rounded-md p-1">Total projects</p>
-      <p class="font-bold bg-gray-800 rounded-md">200</p>
+      <p class="font-bold bg-gray-800 rounded-md">
+        <%= @projects.size%>
+      </p>
+    </div>
+    <div class="rounded-lg bg-gray-600 h-24 min-w-24 p-4 text-center">
+      <p class="capitalize mb-3 border-2 border-dotted border-gray-800 rounded-md p-1">Total tasks</p>
+      <p class="font-bold bg-gray-800 rounded-md">
+        <%= @tasks.size%>
+      </p>
+    </div>
+    <div class="rounded-lg bg-gray-600 h-24 min-w-24 p-4 text-center">
+      <p class="capitalize mb-3 border-2 border-dotted border-gray-800 rounded-md p-1">Urgent tasks</p>
+      <p class="font-bold bg-gray-800 rounded-md">
+        <%= @tasks.urgent.size%>
+      </p>
+    </div>
+    <div class="rounded-lg bg-gray-600 h-24 min-w-24 p-4 text-center">
+      <p class="capitalize mb-3 border-2 border-dotted border-gray-800 rounded-md p-1">Completed tasks</p>
+      <p class="font-bold bg-gray-800 rounded-md">
+        <%= @tasks.completed.size%>
+      </p>
+    </div>
+    <div class="rounded-lg bg-gray-600 h-24 min-w-24 p-4 text-center">
+      <p class="capitalize mb-3 border-2 border-dotted border-gray-800 rounded-md p-1">Expired Tasks</p>
+      <p class="font-bold bg-gray-800 rounded-md">
+        <%= @tasks.expired.size%>
+      </p>
+    </div>
+    <div class="rounded-lg bg-gray-600 h-24 min-w-24 p-4 text-center">
+      <p class="capitalize mb-3 border-2 border-dotted border-gray-800 rounded-md p-1">Pending tasks</p>
+      <p class="font-bold bg-gray-800 rounded-md">
+        <%= @tasks.pending.size%>
+      </p>
     </div>
   </div>
 </main>
