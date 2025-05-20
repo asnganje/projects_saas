@@ -84,3 +84,5 @@ gem "good_job", "~> 4.10"
 gem "chartkick"
 
 gem "groupdate"
+
+gem "simple_calendar"

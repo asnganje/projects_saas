@@ -6,5 +6,6 @@
  * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
  * depending on specificity.
  *
+ *= require simple_calendar
  * Consider organizing styles into separate files for maintainability.
  */
