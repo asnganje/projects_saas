@@ -273,6 +273,10 @@ GEM
       i18n
     rdoc (6.13.1)
       psych (>= 4.0.0)
+    redis (5.4.0)
+      redis-client (>= 0.22.0)
+    redis-client (0.24.0)
+      connection_pool
     regexp_parser (2.10.0)
     reline (0.6.1)
       io-console (~> 0.5)
@@ -409,6 +413,7 @@ DEPENDENCIES
   puma (>= 5.0)
   rails (~> 8.0.2)
   ransack
+  redis
   rubocop-rails-omakase
   selenium-webdriver
   simple_calendar
