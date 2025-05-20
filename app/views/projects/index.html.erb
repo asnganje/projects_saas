@@ -1,3 +1,7 @@
+<% @projects.each do |project|%>
+  <%=turbo_stream_from project%>
+<%end%>
+
 <div class="text-gray-200 p-4 w-full">
   <%= render "projects/add_project_form"%>
   <div class="w-full mt-4">
