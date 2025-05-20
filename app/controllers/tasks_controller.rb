@@ -5,7 +5,7 @@ class TasksController < ApplicationController
   layout "admin"
 
   def index
-    @tasks = Task.all
+    @tasks = current_user.tasks.all
   end
 
   def show
