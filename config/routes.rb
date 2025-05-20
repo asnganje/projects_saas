@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get "calendar", to:"calendar#index"
+  get "calendar", to: "calendar#index"
   mount GoodJob::Engine => "good_job"
   resources :notifications, only: [ :index ]
   get "search", to: "search#index"
