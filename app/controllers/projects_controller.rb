@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [ :destroy, :edit, :update, :show ]
 
   def index
-    @pagy, @projects = pagy(current_user.projects.includes(:tasks), limit: 5)
+    @pagy, @projects = pagy(Project.all.includes(:tasks), limit: 5)
   end
 
   def new
@@ -46,6 +46,6 @@ class ProjectsController < ApplicationController
   end
 
   def set_project
-    @project=current_user.projects.find(params[:id])
+    @project=Project.find(params[:id])
   end
 end
