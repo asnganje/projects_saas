@@ -87,5 +87,4 @@ gem "groupdate"
 
 gem "simple_calendar"
 
-gem 'redis'
-
+gem "redis"
