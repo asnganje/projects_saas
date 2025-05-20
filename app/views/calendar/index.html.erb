@@ -1,4 +1,10 @@
-<div>
-  <h1 class="font-bold text-4xl text-gray-200">Calendar#index</h1>
-  <p>Find me in app/views/calendar/index.html.erb</p>
+<div class="bg-gray-300 p-2 mx-auto size-fit my-6">
+  <%= calendar(number_of_days: 2, events: @tasks, attribute: :duedate) do |date, tasks| %>
+    <%= date %>
+    <% tasks.each do |task|%>
+      <div class="border-2 p-1">
+        <%=link_to task.name, project_path(task.project)%>
+      </div>
+    <%end%>
+  <% end %>
 </div>
