@@ -89,4 +89,4 @@ gem "simple_calendar"
 
 gem "redis"
 
-gem 'acts_as_tenant'
+gem "acts_as_tenant"

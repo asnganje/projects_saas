@@ -8,7 +8,10 @@ Rails.application.configure do
 
   # Do not eager load code on boot.
   config.eager_load = false
-
+  # ## to allow lvh.me locally
+  config.hosts = nil
+  # tp allow redirects
+  config.action_controller.raise_on_open_redirects = false
   # Show full error reports.
   config.consider_all_requests_local = true
 
