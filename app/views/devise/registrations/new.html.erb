@@ -7,20 +7,28 @@
       <% resource.build_owned_organization if resource.build_owned_organization.nil? %>
       <%= f.fields_for :owned_organization do |org|%>
         <div class="mb-4">
-            <%= org.label :subdomain, class:"block mb-2 text-gray-700" %>
+            <%= org.label :organization_subdomain, class:"block mb-2 text-gray-700" %>
             <%= org.text_field :subdomain,
                 autofocus: true,
                 class:"w-full px-3 py-2 border rounded-lg"
             %>
         </div>
         <div class="mb-4">
-            <%= org.label :name, class:"block mb-2 text-gray-700" %>
+            <%= org.label :organization_name, class:"block mb-2 text-gray-700" %>
             <%= org.text_field :name,
                 autofocus: true,
                 class:"w-full px-3 py-2 border rounded-lg"
             %>
         </div>
       <%end%>
+      <div class="mb-4">
+        <%= f.label :your_full_name, class:"block mb-2 text-gray-700" %>
+        <%= f.text_field :full_name,
+            autofocus: true,
+            autocomplete: "fullname",
+            class:"w-full px-3 py-2 border rounded-lg"
+        %>
+      </div>
       <div class="mb-4">
         <%= f.label :email, class:"block mb-2 text-gray-700" %>
         <%= f.email_field :email,
