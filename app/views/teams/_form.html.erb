@@ -13,7 +13,12 @@
 
   <div class="my-5">
     <%= form.label :name, class:"text-gray-200" %>
-    <%= form.text_field :name, class: ["block text-gray-200 shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": team.errors[:name].none?, "border-red-400 focus:outline-red-600": team.errors[:name].any?}] %>
+    <%= form.text_field :name, class: ["block bg-gray-200 text-gray-900 shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": team.errors[:name].none?, "border-red-400 focus:outline-red-600": team.errors[:name].any?}] %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :select_team_members, class:"text-gray-200" %>
+    <%= form.collection_check_boxes :name, class: ["block bg-gray-200 text-gray-900 shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": team.errors[:name].none?, "border-red-400 focus:outline-red-600": team.errors[:name].any?}] %>
   </div>
 
   <div class="inline">
