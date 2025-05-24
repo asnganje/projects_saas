@@ -18,7 +18,8 @@
           <td class="px-4 py-3 capitalize">Member</td>
           <td class="px-4 py-3 capitalize">
             <%=form_with url: change_role_organization_user_path(user) do |f| %>
-              <%=f.select :role, User::ROLES,{prompt: "select role"}, onchange:"this.form.requestSubmit()"
+              <%=f.select :role, User::ROLES,{prompt: "select role"}, onchange:"this.form.requestSubmit()",
+              class:"text-gray-600"
               %>
             <%end%>
           </td>
