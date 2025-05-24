@@ -12,13 +12,8 @@
   <% end %>
 
   <div class="my-5">
-    <%= form.label :name %>
+    <%= form.label :name, class:"text-gray-200" %>
     <%= form.text_field :name, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": team.errors[:name].none?, "border-red-400 focus:outline-red-600": team.errors[:name].any?}] %>
-  </div>
-
-  <div class="my-5">
-    <%= form.label :organization_id %>
-    <%= form.text_field :organization_id, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": team.errors[:organization_id].none?, "border-red-400 focus:outline-red-600": team.errors[:organization_id].any?}] %>
   </div>
 
   <div class="inline">
