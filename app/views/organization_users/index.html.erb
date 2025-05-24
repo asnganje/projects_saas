@@ -1,0 +1,20 @@
+<div class="text-gray-200 p-4 w-full">
+  <div class="w-full mt-4">
+    <table class="bg-gray-800 rounded-md w-full">
+      <thead>
+        <tr class="text-left uppercase border-b border-gray-500">
+        <th class="px-4 py-3">Email</th>
+        <th class="px-4 py-3">Roles</th>
+      </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr class="border-b border-gray-500">
+          <td class="px-4 py-3 capitalize"><%= user.email %></td>
+          <td class="px-4 py-3 capitalize">Member</td>
+        </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+</div>
