@@ -9,4 +9,13 @@ class User < ApplicationRecord
   has_many :notifications, as: :recipient, dependent: :destroy, class_name: "Noticed::Notification"
   belongs_to :organization, optional: true
   accepts_nested_attributes_for :owned_organization, reject_if: :all_blank
+  before_create :set_organization, if: :created_by_invite? 
+
+  def organization_owner?
+    owned_organization.present?
+  end
+
+  def set_organization
+    self.organization_id = invited_by.owned_organization.id
+  end
 end
