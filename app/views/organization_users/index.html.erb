@@ -15,7 +15,7 @@
         <% @users.each do |user| %>
         <tr class="border-b border-gray-500">
           <td class="px-4 py-3 capitalize"><%= user.email %></td>
-          <td class="px-4 py-3 capitalize">Member</td>
+          <td class="px-4 py-3 capitalize"><%= user.roles.map(&:name).join(",") %></td>
           <td class="px-4 py-3 capitalize">
             <%=form_with url: change_role_organization_user_path(user) do |f| %>
               <%=f.select :role, User::ROLES,{prompt: "select role"}, onchange:"this.form.requestSubmit()",
