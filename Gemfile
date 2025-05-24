@@ -90,3 +90,5 @@ gem "simple_calendar"
 gem "redis"
 
 gem "acts_as_tenant"
+
+gem 'devise_invitable', '~> 2.0.0'
