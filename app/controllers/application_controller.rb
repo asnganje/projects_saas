@@ -6,7 +6,11 @@ class ApplicationController < ActionController::Base
 
   include Pagy::Backend
   def after_sign_in_path_for(resource)
-    dashboard_index_url(subdomain: resource.owned_organization.subdomain.downcase)
+    if resource.organization_owner?
+      dashboard_index_url(subdomain: resource.owned_organization.subdomain.downcase)
+    else
+      dashboard_index_url(subdomain: resource.organization.subdomain.downcase)
+    end
   end
 
   protected
