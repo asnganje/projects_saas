@@ -8,6 +8,7 @@
         <tr class="text-left uppercase border-b border-gray-500">
         <th class="px-4 py-3">Email</th>
         <th class="px-4 py-3">Roles</th>
+        <th class="px-4 py-3">Change roles</th>
       </tr>
       </thead>
       <tbody>
@@ -15,6 +16,12 @@
         <tr class="border-b border-gray-500">
           <td class="px-4 py-3 capitalize"><%= user.email %></td>
           <td class="px-4 py-3 capitalize">Member</td>
+          <td class="px-4 py-3 capitalize">
+            <%=form_with url: change_role_organization_user_path(user) do |f| %>
+              <%=f.select :role, User::ROLES,{prompt: "select role"}, onchange:"this.form.requestSubmit()"
+              %>
+            <%end%>
+          </td>
         </tr>
         <%end%>
       </tbody>
