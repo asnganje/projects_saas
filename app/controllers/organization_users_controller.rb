@@ -14,8 +14,8 @@ class OrganizationUsersController < ApplicationController
         @user.remove_role(role)
       end
     end
-    
+
     @user.add_role(params[:role])
-    redirect_to organization_users_path, notice:"Role updated successfully!"
+    redirect_to organization_users_path, notice: "Role updated successfully!"
   end
 end
