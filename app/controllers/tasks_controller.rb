@@ -5,7 +5,7 @@ class TasksController < ApplicationController
   layout "admin"
 
   def index
-    @tasks = current_user.tasks.all
+    @tasks = Task.all
   end
 
   def show
@@ -60,7 +60,7 @@ class TasksController < ApplicationController
       @project = Project.find(params[:project_id])
     end
     def set_task
-      @task = @project.tasks.find(params[:id])
+      @task = Task.find(params[:id])
     end
     def task_params
       params.expect(task: [ :completed, :name, :duedate, :completed_at, :priority, :project_id ])

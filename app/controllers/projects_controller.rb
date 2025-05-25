@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [ :destroy, :edit, :update, :show ]
 
   def index
-    @pagy, @projects = pagy(Project.all.includes(:tasks), limit: 5)
+    @pagy, @projects = pagy(Project.includes(:tasks), limit: 5)
   end
 
   def new
@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = current_user.projects.build(project_params)
+    @project = Project.new(project_params)
     if @project.save
       redirect_to projects_url, notice: "Project created!"
     else
