@@ -42,7 +42,7 @@ class ProjectsController < ApplicationController
 
   private
   def project_params
-    params.require(:project).permit(:name)
+    params.require(:project).permit(:name, :team_id)
   end
 
   def set_project

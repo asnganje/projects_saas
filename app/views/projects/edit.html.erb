@@ -3,7 +3,14 @@
   <div class="fixed inset-0 mt-8 p-4 bg-gray-800 size-96 my-4 rounded-md mx-auto">
     <%= form_with model: @project do |form|%>
       <div class="flex flex-col items-center justify-center gap-8 my-15">
-        <%=form.text_field :name, placeholder:"Enter project name", class:"bg-gray-900 w-full rounded-md text-gray-200 p-3"%>
+        <div class="mb-4">
+          <%=form.label :project_name, class:"text-gray-300"%>
+          <%=form.text_field :name, placeholder:"Enter project name", class:"bg-gray-900 w-full rounded-md text-gray-200 p-3"%>
+        </div>
+        <div class="mb-4 w-70 mx-auto text-gray-300">
+          <%=form.label :assign_to_team, class:"text-gray-300"%>
+          <%=form.collection_select :team_id, Team.all, :id, :name, class:"bg-gray-900 w-full rounded-md text-gray-200 p-3"%>
+        </div>
         <%=form.submit class:"bg-blue-500 hover:bg-blue-600 p-3 cursor-pointer rounded-md", data:{turbo_frame: "-top"}%>
         <div class="absolute top-2 right-2">
           <%= button_to projects_path do %>
