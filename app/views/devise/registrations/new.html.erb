@@ -2,7 +2,7 @@
   <div class="md:max-w-md w-full bg-gray-100 shadow-lg p-8 rounded-lg">
     <h2 class="font-bold mb-6 text-gray-800 text-center text-2xl">Sign up</h2>
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), data: {turbo: false}) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
       <% resource.build_owned_organization if resource.build_owned_organization.nil? %>
       <%= f.fields_for :owned_organization do |org|%>

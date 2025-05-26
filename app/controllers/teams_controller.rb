@@ -1,4 +1,6 @@
 class TeamsController < ApplicationController
+  layout "admin"
+  before_action :authenticate_user!
   before_action :set_team, only: %i[ show edit update destroy ]
 
   # GET /teams or /teams.json
@@ -65,6 +67,6 @@ class TeamsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def team_params
-      params.expect(team: [ :name, :organization_id ])
+      params.expect(team: [ :name, user_ids: [] ])
     end
 end

@@ -12,13 +12,13 @@
   <% end %>
 
   <div class="my-5">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": team.errors[:name].none?, "border-red-400 focus:outline-red-600": team.errors[:name].any?}] %>
+    <%= form.label :name, class:"text-gray-200" %>
+    <%= form.text_field :name, class: ["block bg-gray-200 text-gray-900 shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": team.errors[:name].none?, "border-red-400 focus:outline-red-600": team.errors[:name].any?}] %>
   </div>
 
-  <div class="my-5">
-    <%= form.label :organization_id %>
-    <%= form.text_field :organization_id, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": team.errors[:organization_id].none?, "border-red-400 focus:outline-red-600": team.errors[:organization_id].any?}] %>
+  <div class="my-5 text-gray-200">
+    <%= form.label :select_team_members %><br>
+    <%= form.collection_check_boxes :user_ids, current_tenant.users, :id, :email, class: ["block bg-gray-200 text-gray-900 shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": team.errors[:name].none?, "border-red-400 focus:outline-red-600": team.errors[:name].any?}] %>
   </div>
 
   <div class="inline">
