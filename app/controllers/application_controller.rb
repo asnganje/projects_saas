@@ -14,6 +14,12 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+  def authenticate_owner!
+    unless current_user.organization_owner?
+      flash[:alert] = "You are not authorized to perform this action!"
+      redirect_back_or_to(root_path)
+    end
+  end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [ :full_name, owned_organization_attributes: [ :name, :subdomain ] ])
