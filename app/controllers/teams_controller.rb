@@ -6,7 +6,11 @@ class TeamsController < ApplicationController
 
   # GET /teams or /teams.json
   def index
-    @teams = Team.all
+    if current_user.organization_owner?
+      @teams = Team.all
+    else
+      @teams = current_user.teams
+    end
   end
 
   # GET /teams/1 or /teams/1.json
@@ -63,7 +67,11 @@ class TeamsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_team
-      @team = Team.find(params.expect(:id))
+      @team = if current_user.organization_owner?
+        Team.find(params.expect(:id))
+      else
+        current_user.teams.find(params[:id])
+      end
     end
 
     # Only allow a list of trusted parameters through.
