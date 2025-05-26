@@ -1,0 +1,20 @@
+<div class="flex items-center justify-center min-h-screen py-8 bg-gray-200">
+  <div class="md:max-w-md w-full bg-gray-100 shadow-lg p-8 rounded-lg">
+    <h2><%= t "devise.invitations.new.header" %></h2>
+
+    <%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <% resource.class.invite_key_fields.each do |field| -%>
+        <div class="field">
+          <%= f.label field %><br />
+          <%= f.text_field field %>
+        </div>
+      <% end -%>
+
+      <div class="actions">
+        <%= f.submit t("devise.invitations.new.submit_button"), class:"cursor-pointer mt-4 bg-orange-600 px-4 py-2 text-white font-semibold rounded-lg shadow-md hover:bg-orange-700 duration-200" %>
+      </div>
+    <% end %>
+  </div>
+</div>
