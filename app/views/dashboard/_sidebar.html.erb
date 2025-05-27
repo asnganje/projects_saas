@@ -10,15 +10,21 @@
       <%= link_to "project", projects_path %>
     </li>
     <li class="mt-6 hover:text-gray-800 visited:text-gray-800">
-      <%= link_to "Calendar", calendar_path %>
+      <%= link_to calendar_path do %>
+        Calendar <span class="text-xs text-orange-500">enterprise</span>
+      <%end%>
     </li>
     <%if current_user.organization_owner? %>
       <li class="mt-6 hover:text-gray-800 visited:text-gray-800">
-        <%= link_to "Users", organization_users_path %>
+        <%= link_to organization_users_path do %>
+          Users <span class="text-xs text-orange-500">pro</span>
+        <%end%>
       </li>
     <%end%>
     <li class="mt-6 hover:text-gray-800 visited:text-gray-800">
-      <%= link_to "Teams", teams_path %>
+      <%= link_to teams_path do %>
+        Teams <span class="text-xs text-orange-500">pro</span>
+      <%end%>
     </li>
     <li class="mt-6 hover:text-gray-800 visited:text-gray-800">
       <%= link_to "Plans", subscriptions_path %>
