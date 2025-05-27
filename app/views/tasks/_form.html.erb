@@ -29,6 +29,10 @@
               <%= form.label :priority %>
               <%= form.select :priority, Task.priorities.keys, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": task.errors[:priority].none?, "border-red-400 focus:outline-red-600": task.errors[:priority].any?}] %>
             </div>
+            <div class="my-5">
+              <%= form.label :assign_to %>
+              <%= form.collection_select :assignee_id, @project.team.users, :id, :email, class: ["block shadow-sm rounded-md border px-3 py-2 mt-2 w-full", {"border-gray-400 focus:outline-blue-600": task.errors[:priority].none?, "border-red-400 focus:outline-red-600": task.errors[:priority].any?}] %>
+            </div>
             <div class="inline">
               <%= form.submit class: "w-full sm:w-auto rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white inline-block font-medium cursor-pointer",
               data: {turbo_frame: "_top"}

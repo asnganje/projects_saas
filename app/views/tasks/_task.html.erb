@@ -4,6 +4,7 @@
       <tr class="text-left capitalize border-b border-gray-500">
       <th class="px-4 py-3">Complete</th>
       <th class="px-4 py-3">Completed on</th>
+      <th class="px-4 py-3">Assigned to</th>
       <th class="px-4 py-3"><%= sort_link(@q, :name) %></th>
       <th class="px-4 py-3">Priority</th>
       <th class="px-4 py-3"><%= sort_link(@q, :duedate, 'Due in') %></th>
@@ -18,6 +19,7 @@
           <%end%>
         </td>
         <td class="px-4 py-3"><%= task.completed? ? "#{time_ago_in_words(task.completed_at)} ago" : "Incomplete"%></td>
+        <td class="px-4 py-3 capitalize"><%= task.assignee&.email %></td>
         <td class="px-4 py-3 capitalize"><%= task.name %></td>
         <td class="px-4 py-3"><%= task_priority(task.priority) %></td>
         <td class="px-4 py-3"><%= task.expired? ? "Expired" : distance_of_time_in_words(Time.current, task.duedate) %></td>
