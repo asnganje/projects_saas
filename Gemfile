@@ -96,3 +96,8 @@ gem "acts_as_tenant"
 gem "devise_invitable", "~> 2.0.0"
 
 gem "rolify"
+
+gem "pay", "~> 10.1"
+
+# To use Stripe, also include:
+gem "stripe", "~> 15.1"
