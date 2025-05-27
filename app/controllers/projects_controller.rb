@@ -1,10 +1,15 @@
 class ProjectsController < ApplicationController
   layout "admin"
   before_action :authenticate_user!
+  before_action :authenticate_owner!, only: %i[ new create edit update destroy ]
   before_action :set_project, only: [ :destroy, :edit, :update, :show ]
 
   def index
-    @pagy, @projects = pagy(Project.includes(:tasks), limit: 5)
+    if current_user.organization_owner?
+      @pagy, @projects = pagy(Project.includes(:tasks), limit: 5)
+    else
+      @pagy, @projects = pagy(current_user.projects.includes(:tasks), limit: 5)
+    end
   end
 
   def new
@@ -12,7 +17,11 @@ class ProjectsController < ApplicationController
 
   def show
     @q = @project.tasks.ransack(params[:q])
-    @pagy, @tasks = pagy(@q.result.incomplete_first, limit: 5)
+    if current_user.organization_owner? || current_user.has_role?(:team_leader)
+      @pagy, @tasks = pagy(@q.result.incomplete_first, limit: 5)
+    else
+      @pagy, @tasks = pagy(@q.result.incomplete_first.where(assignee: current_user), limit: 5)
+    end
   end
 
   def create
@@ -46,6 +55,10 @@ class ProjectsController < ApplicationController
   end
 
   def set_project
-    @project=Project.find(params[:id])
+    @project = if current_user.organization_owner?
+      Project.find(params[:id])
+    else
+      current_user.projects.find(params[:id])
+    end
   end
 end

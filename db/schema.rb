@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_25_052739) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_27_061335) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -167,6 +167,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_25_052739) do
     t.datetime "updated_at", null: false
     t.boolean "completed", default: false
     t.bigint "organization_id", null: false
+    t.bigint "assignee_id"
+    t.index ["assignee_id"], name: "index_tasks_on_assignee_id"
     t.index ["organization_id"], name: "index_tasks_on_organization_id"
     t.index ["project_id"], name: "index_tasks_on_project_id"
   end
@@ -226,6 +228,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_25_052739) do
   add_foreign_key "projects", "teams"
   add_foreign_key "tasks", "organizations"
   add_foreign_key "tasks", "projects"
+  add_foreign_key "tasks", "users", column: "assignee_id"
   add_foreign_key "team_members", "teams"
   add_foreign_key "team_members", "users"
   add_foreign_key "teams", "organizations"

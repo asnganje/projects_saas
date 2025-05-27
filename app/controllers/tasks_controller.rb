@@ -2,6 +2,7 @@ class TasksController < ApplicationController
   before_action :set_project
   before_action :set_task, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
+  before_action :authenticate_owner_or_team_leader!, only: %i[create update destroy]
   layout "admin"
 
   def index
@@ -63,6 +64,6 @@ class TasksController < ApplicationController
       @task = Task.find(params[:id])
     end
     def task_params
-      params.expect(task: [ :completed, :name, :duedate, :completed_at, :priority, :project_id ])
+      params.expect(task: [ :completed, :name, :duedate, :completed_at, :priority, :project_id, :assignee_id ])
     end
 end

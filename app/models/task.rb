@@ -1,6 +1,7 @@
 class Task < ApplicationRecord
   acts_as_tenant :organization
   belongs_to :project, touch: true
+  belongs_to :assignee, class_name: "User", optional: true
   has_many :noticed_events, as: :record, dependent: :destroy, class_name: "Noticed::Event"
   has_many :notifications, through: :noticed_events, class_name: "Noticed::Notification"
   validates :name, :duedate, presence: true
