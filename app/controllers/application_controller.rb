@@ -21,6 +21,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authenticate_owner_or_team_leader!
+    unless current_user.organization_owner? || current_user.has_role?(:team_leader)
+      flash[:alert] = "You are not authorized to perform this action!"
+      redirect_back_or_to(root_path)
+    end
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [ :full_name, owned_organization_attributes: [ :name, :subdomain ] ])
 
