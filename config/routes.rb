@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :teams
+  resources :subscriptions
   authenticate :user, ->(user) { user.organization_owner? } do
     resources :organization_users do
       member do
