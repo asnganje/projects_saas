@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :teams
-  authenticate :user, -> (user) {user.organization_owner} do
+  authenticate :user, -> (user) {user.organization_owner?} do
     resources :organization_users do
       member do
         post "/change_role", to: "organization_users#change_role"
