@@ -6,6 +6,7 @@ class User < ApplicationRecord
   devise :invitable, :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable
   has_many :team_members
+  pay_customer
   has_many :teams, through: :team_members
   has_many :projects, through: :teams
   has_one :owned_organization, class_name: "Organization", foreign_key: :owner_id, inverse_of: :owner, dependent: :destroy
