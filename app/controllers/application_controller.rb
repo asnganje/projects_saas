@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_subscription!
-    unless current_user.payment_processor.subscribed?
+    unless current_user.payment_processor&.subscribed?
       flash[:alert] = "Upgrade to access this feature!"
       redirect_to subscriptions_path
     end
