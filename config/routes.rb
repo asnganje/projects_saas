@@ -14,7 +14,10 @@ Rails.application.routes.draw do
   authenticate :user, ->(user) { user.admin? } do
     mount GoodJob::Engine => "good_job"
     namespace :admin do
-      resources :dashboard 
+      resources :dashboard do
+        post :impersonate, on: :member
+        post :stop_impersonating, on: :collection
+      end
     end
   end
 
