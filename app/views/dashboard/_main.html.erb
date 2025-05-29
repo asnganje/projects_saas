@@ -1,4 +1,10 @@
 <main class="text-gray-200 p-3 mx-auto">
+  <p class="text-xs">
+    <% if current_user != true_user %>
+      You (<%= true_user.email %>) are signed in as <%= current_user.email %>
+      <%= button_to "Back to admin", stop_impersonating_admin_dashboard_index_path, data: {turbo: false} %>
+    <% end %>
+  </p>
   <div class="flex gap-6 flex-wrap">
     <div class="rounded-lg bg-gray-600 h-24 min-w-24 p-4 text-center">
       <p class="capitalize mb-3 border-2 border-dotted border-gray-800 rounded-md p-1">Total projects</p>

@@ -101,3 +101,5 @@ gem "pay", "~> 10.1"
 
 # To use Stripe, also include:
 gem "stripe", "~> 15.1"
+
+gem "pretender"
