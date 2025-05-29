@@ -11,6 +11,6 @@ class Admin::DashboardController < ApplicationController
 
   def stop_impersonating
     stop_impersonating_user
-    redirect_to admin_dashboard_index_url(subdomain:""), allow_other_host: true
+    redirect_to admin_dashboard_index_url(subdomain: ""), allow_other_host: true
   end
 end
