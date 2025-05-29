@@ -26,8 +26,14 @@
         Teams <span class="text-xs text-orange-500">pro</span>
       <%end%>
     </li>
-    <li class="mt-6 hover:text-gray-800 visited:text-gray-800">
-      <%= link_to "Plans", subscriptions_path %>
-    </li>
+    <%if current_user.payment_processor&.subscribed? %>
+      <li class="mt-6 hover:text-gray-800 visited:text-gray-800">
+        <%= link_to "Upgrade", billing_path %>
+      </li>
+    <%else%>
+      <li class="mt-6 hover:text-gray-800 visited:text-gray-800">
+        <%= link_to "Plans", subscriptions_path %>
+      </li>
+    <%end%>
   </ul>  
 </aside>

@@ -35,6 +35,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_enterprise_subscription!
+    unless current_user.payment_processor&.subscribed?(processor_plan: "price_1RTZsBKGkMpWM36VXCvAHtuC")
+      flash[:alert] = "Upgrade to access this feature!"
+      redirect_to billing_path
+    end
+  end
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [ :full_name, owned_organization_attributes: [ :name, :subdomain ] ])
 
