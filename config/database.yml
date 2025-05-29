@@ -16,4 +16,7 @@ test:
 
 production:
   <<: *default
-  database: saas_app_production
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  url: <%= ENV['DATABASE_URL'] %>
