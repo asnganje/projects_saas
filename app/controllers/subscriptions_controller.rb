@@ -23,15 +23,15 @@ class SubscriptionsController < ApplicationController
     end
 
   session = Stripe::Checkout::Session.create(
-    mode: 'subscription',
+    mode: "subscription",
     locale: I18n.locale.to_s,
-    payment_method_types: ['card'],
+    payment_method_types: [ "card" ],
     customer: current_user.payment_processor.processor_id,
-    line_items: [{
+    line_items: [ {
       price: params[:price],
       quantity: 1
-    }],
-    success_url: dashboard_index_url + '?session_id={CHECKOUT_SESSION_ID}',
+    } ],
+    success_url: dashboard_index_url + "?session_id={CHECKOUT_SESSION_ID}",
     cancel_url: root_url
   )
 
