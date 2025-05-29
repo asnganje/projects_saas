@@ -6,6 +6,8 @@ class User < ApplicationRecord
   devise :invitable, :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable
   has_many :team_members
+  pay_customer default_payment_processor: :stripe
+  # has_one :payment_processor, class_name: "Pay::Customer", as: :owner, dependent: :destroy
   has_many :teams, through: :team_members
   has_many :projects, through: :teams
   has_one :owned_organization, class_name: "Organization", foreign_key: :owner_id, inverse_of: :owner, dependent: :destroy
@@ -22,6 +24,10 @@ class User < ApplicationRecord
 
   def assign_default_role
     add_role(:team_member) if self.roles.blank?
+  end
+
+  def pay_customer_name
+    owned_organization.name
   end
 
   def set_organization

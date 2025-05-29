@@ -1,5 +1,6 @@
 class CalendarController < ApplicationController
   before_action :authenticate_user!
+  before_action :require_enterprise_subscription!
   layout "admin"
   def index
     start_date = params.fetch(:start_date, Date.today).to_date

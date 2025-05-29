@@ -1,6 +1,7 @@
 class OrganizationUsersController < ApplicationController
   layout "admin"
   before_action :authenticate_user!
+  before_action :require_subscription!
 
   def index
     @users = current_tenant.users
