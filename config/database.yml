@@ -10,16 +10,22 @@ development:
   <<: *default
   database: saas_app_development
 
+  queue:
+    <<: *default
+    database: saas_app_development
+
 test:
   <<: *default
   database: saas_app_test
 
+  queue:
+    <<: *default
+    database: saas_app_test
+
 production:
   <<: *default
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
   url: <%= ENV['DATABASE_URL'] %>
-queue:
-    adapter: postgresql
-    url: <%= ENV["DATABASE_URL"] %>
+
+  queue:
+    <<: *default
+    url: <%= ENV['DATABASE_URL'] %>
