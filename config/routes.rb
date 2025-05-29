@@ -8,10 +8,17 @@ Rails.application.routes.draw do
         post "/change_role", to: "organization_users#change_role"
       end
     end
-    mount GoodJob::Engine => "good_job"
     mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   end
-    get "calendar", to: "calendar#index"
+
+  authenticate :user, ->(user) { user.admin? } do
+    mount GoodJob::Engine => "good_job"
+    namespace :admin do
+      resources :dashboard 
+    end
+  end
+
+  get "calendar", to: "calendar#index"
   resources :notifications, only: [ :index ]
   get "search", to: "search#index"
   get "read_notifications", to: "read_notifications#read_all"

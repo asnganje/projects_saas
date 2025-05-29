@@ -1,7 +1,9 @@
-# user = User.create!(
-#   email: "asya@gmail.com",
-#   password: "password"
-# )
+User.create!(
+  full_name: "admin",
+  email: "admin@gmail.com",
+  admin: true,
+  password: "password"
+)
 
 # projects = 20.times.map do
 #   Project.create!(name: Faker::Educator.unique.subject, user: user)
