@@ -2,8 +2,6 @@ class ApplicationController < ActionController::Base
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
   protect_from_forgery with: :exception
-  protect_from_forgery with: :null_session
-  skip_before_action :verify_authenticity_token, only: [:create, :login]
   impersonates :user
   set_current_tenant_by_subdomain(:organization, :subdomain)
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -11,11 +9,11 @@ class ApplicationController < ActionController::Base
   include Pagy::Backend
   def after_sign_in_path_for(resource)
     if resource.organization_owner?
-      dashboard_index_url(subdomain: resource.owned_organization.subdomain.downcase)
+      dashboard_index_path(subdomain: resource.owned_organization.subdomain.downcase)
     elsif resource.admin?
-      admin_dashboard_index_url
+      admin_dashboard_index_path
     else
-      dashboard_index_url(subdomain: resource.organization.subdomain.downcase)
+      dashboard_index_path(subdomain: resource.organization.subdomain.downcase)
     end
   end
 
