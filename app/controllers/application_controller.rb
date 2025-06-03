@@ -12,8 +12,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     if resource.organization_owner?
       dashboard_index_url(subdomain: resource.owned_organization.subdomain.downcase)
-    elsif
-      resource.admin?
+    elsif resource.admin?
       admin_dashboard_index_url
     else
       dashboard_index_url(subdomain: resource.organization.subdomain.downcase)
