@@ -93,4 +93,6 @@ Rails.application.configure do
   config.assets.compile = false
   config.assets.digest = true
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  config.action_mailer.default_url_options = { host: 'projects-saas1.onrender.com', protocol: 'https' }
+  config.hosts << "projects-saas1.onrender.com"
 end
