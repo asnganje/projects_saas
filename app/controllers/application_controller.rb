@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
+  protect_from_forgery with: :exception
   impersonates :user
   set_current_tenant_by_subdomain(:organization, :subdomain)
   before_action :configure_permitted_parameters, if: :devise_controller?
